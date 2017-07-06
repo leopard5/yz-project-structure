@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.yz</groupId>
+        <artifactId>demo-all</artifactId>
+        <version>1.0.0.RELEASE</version>
+	</parent>
+	
+	<artifactId>demo-biz</artifactId>
+	<version>${biz.version}</version>
+	
+	<dependencies>
+		<!-- inner module start -->
+		<dependency>
+			<groupId>com.yz</groupId>
+		    <artifactId>demo-api</artifactId>
+			<version>${api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yz</groupId>
+			<artifactId>demo-core</artifactId>
+			<version>${core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yz</groupId>
+			<artifactId>demo-dal</artifactId>
+			<version>${dal.version}</version>
+		</dependency>
+		<!-- inner module end -->
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.14</version>
+		</dependency>
+
+		<!-- log -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		    <version>4.1.6</version>
+		</dependency>	
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+	</dependencies>
+</project>

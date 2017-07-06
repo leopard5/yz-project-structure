@@ -1,0 +1,196 @@
+{
+    "ownerType": 1,
+    "ownerId": "1",
+    "ownerName": "平台",
+    "activityId": 1,
+    "couponName": "E端优惠券[统一发券][无门槛现金抵用券]测试1",
+    "couponUseType":1,
+    "price":0.00,
+    "perPersonLimit":3,
+    "perOrderLimit":3,
+    "couponPackageId":0,
+    "couponTypeId": 51,
+    "startTime": 1482938806000,
+    "endTime": 1484666806000,
+    "pendingTime": 1484666806000,
+    "isSharedCoupon": false,
+    "isSharedSubpromotion": false,
+    "redirectType": 1,
+    "redirectUrl": "http://www.baidu.com",
+    "isMustApply": true,
+    "affordCostType": 1,
+    "affordCostValue": 1,
+    "couponDispatchType": 1,
+    "issueStartTime": 1482935206000,
+    "issueEndTime": 1484580406000,
+    "issuedTotalAmount": 10,
+    "scopeType": 1,
+    "promotionAmount": 10.01,
+    "orderFullAmount": 1000.01,
+    "discountAmount": 0.95,
+    "promotionMaxAmount": 30.03,
+    "promotionScopeAmount": "",
+    "rebateSender":1,
+    "rebatesPlanReqList":[
+        {
+            "planName": "方案1",
+            "rebateType": 3,
+            "rebateValue": null,
+            "rebatesMallReqList":[
+                {
+                    "mallId":"1119",
+                    "shopId":"11190001"
+                },
+                {
+                    "mallId":"1119",
+                    "shopId":"111900011"
+                }
+            ],
+            "rebatesPlanDetailReqList":[
+                {
+                    "rebateStepValue":10000,
+                    "rebateCondType":2,
+                    "rebateCondValue":100000
+                },
+                {
+                    "rebateStepValue":20000,
+                    "rebateCondType":2,
+                    "rebateCondValue":200000
+                },
+                {
+                    "rebateStepValue":3000,
+                    "rebateCondType":2,
+                    "rebateCondValue":30000
+                }
+            ]
+        },
+        {
+            "planName": "方案2",
+            "rebateType": 2,
+            "rebateValue": null,
+            "limitType": 2,
+            "limitValue": 30000,
+            "rebatesMallReqList":[
+                {
+                    "mallId":"1119",
+                    "shopId":"11190002"
+                }
+            ],
+            "rebatesPlanDetailReqList":[
+                {
+                    "rebateStepValue":0.1,
+                    "rebateCondType":1,
+                    "rebateCondValue":1
+                },
+                {
+                    "rebateStepValue":0.2,
+                    "rebateCondType":1,
+                    "rebateCondValue":2
+                },
+                {
+                    "rebateStepValue":0.3,
+                    "rebateCondType":1,
+                    "rebateCondValue":3
+                }
+            ]
+        },
+        {
+            "planName": "方案3",
+            "rebateType": 3,
+            "rebateValue": null,
+            "rebatesMallReqList":[
+                {
+                    "mallId":"1119",
+                    "shopId":"111900013"
+                }
+            ],
+            "rebatesPlanDetailReqList":[
+                {
+                    "rebateStepValue":10000,
+                    "rebateCondType":2,
+                    "rebateCondValue":100000
+                },
+                {
+                    "rebateStepValue":20000,
+                    "rebateCondType":2,
+                    "rebateCondValue":200000
+                },
+                {
+                    "rebateStepValue":30000,
+                    "rebateCondType":2,
+                    "rebateCondValue":30000
+                }
+            ]
+        },
+        {
+            "planName": "方案4",
+            "rebateType": 2,
+            "rebateValue": null,
+            "limitType": 2,
+            "limitValue": 1000,
+            "rebatesMallReqList":[
+                {
+                    "mallId":"1119",
+                    "shopId":"11190004"
+                }
+            ],
+            "rebatesPlanDetailReqList":[
+                {
+                    "rebateStepValue":0.1,
+                    "rebateCondType":1,
+                    "rebateCondValue":1
+                },
+                {
+                    "rebateStepValue":0.2,
+                    "rebateCondType":1,
+                    "rebateCondValue":2
+                },
+                {
+                    "rebateStepValue":0.3,
+                    "rebateCondType":1,
+                    "rebateCondValue":3
+                },
+                {
+                    "rebateStepValue":0.3,
+                    "rebateCondType":1,
+                    "rebateCondValue":4
+                }
+            ]
+        },
+        {
+            "planName": "方案5",
+            "rebateType": 2,
+            "rebateValue": null,
+            "limitType": 2,
+            "limitValue": 1000,
+            "rebatesMallReqList":[
+                {
+                    "mallId":"1119",
+                    "shopId":"11190005"
+                }
+            ],
+            "rebatesPlanDetailReqList":[
+                {
+                    "rebateStepValue":0.1,
+                    "rebateCondType":2
+                },
+                {
+                    "rebateStepValue":0.2,
+                    "rebateCondType":2,
+                    "rebateCondValue":2000
+                },
+                {
+                    "rebateStepValue":0.3,
+                    "rebateCondType":2,
+                    "rebateCondValue":3000
+                },
+                {
+                    "rebateStepValue":0.3,
+                    "rebateCondType":2,
+                    "rebateCondValue":4000
+                }
+            ]
+        }
+    ],
+    "giftName": "test string"
+}

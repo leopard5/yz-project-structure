@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+<!-- 	<bean id="invokeLogger" class="com.yz.demo.dubbo.InvokeLogger"></bean> -->
+  
+    <dubbo:monitor protocol="registry" />
+
+    <!-- 提供方应用信息 -->
+    <dubbo:application name="mmc-service"/>
+
+	<!--记录调用日志 -->
+<!-- 	<dubbo:provider timeout="60000" filter="invokeLogFilter,default" /> -->
+  	<dubbo:provider timeout="60000" filter="default" />
+  
+    <!-- dubbo服务暴露端口 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.port}" />
+
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry protocol="zookeeper" address="${zk.hosts}" />
+
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.ICouponService" ref="couponService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+</beans>

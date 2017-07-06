@@ -1,0 +1,17 @@
+urms:
+  config:
+    loginServerUrlPrefix: http://urms.mmall.com/passport
+    shiroServerUrlPrefix: http://urms.mmall.com
+    anons:
+       /index.html: anon
+       /component/**: anon
+       /**i18n/**: anon
+       /**.js: anon
+       /**.map: anon
+       /**.woff: anon
+       /login : anon
+       /logout: anon
+       /static: anon
+       /metrics: anon       
+       /api-docs/**: anon
+       /test/applicationAlive: anon

@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yz.demo.dao.ext.CouponExtMapper">
+	<resultMap id="BaseResultMap" type="com.yz.demo.model.Coupon" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="owner_type" property="ownerType" jdbcType="TINYINT" />
+    <result column="owner_id" property="ownerId" jdbcType="VARCHAR" />
+    <result column="owner_name" property="ownerName" jdbcType="VARCHAR" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="coupon_name" property="couponName" jdbcType="VARCHAR" />
+    <result column="coupon_no" property="couponNo" jdbcType="VARCHAR" />
+    <result column="coupon_use_type" property="couponUseType" jdbcType="TINYINT" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="coupon_package_id" property="couponPackageId" jdbcType="INTEGER" />
+    <result column="per_person_limit" property="perPersonLimit" jdbcType="INTEGER" />
+    <result column="per_order_limit" property="perOrderLimit" jdbcType="INTEGER" />
+    <result column="coupon_type_id" property="couponTypeId" jdbcType="TINYINT" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="pending_time" property="pendingTime" jdbcType="TIMESTAMP" />
+    <result column="is_shared_subpromotion" property="isSharedSubpromotion" jdbcType="BIT" />
+    <result column="is_shared_coupon" property="isSharedCoupon" jdbcType="BIT" />
+    <result column="redirect_type" property="redirectType" jdbcType="TINYINT" />
+    <result column="redirect_url" property="redirectUrl" jdbcType="VARCHAR" />
+    <result column="is_must_apply" property="isMustApply" jdbcType="BIT" />
+    <result column="afford_cost_type" property="affordCostType" jdbcType="TINYINT" />
+    <result column="afford_cost_value" property="affordCostValue" jdbcType="DECIMAL" />
+    <result column="coupon_dispatch_type" property="couponDispatchType" jdbcType="TINYINT" />
+    <result column="issue_start_time" property="issueStartTime" jdbcType="TIMESTAMP" />
+    <result column="issue_end_time" property="issueEndTime" jdbcType="TIMESTAMP" />
+    <result column="issued_total_amount" property="issuedTotalAmount" jdbcType="INTEGER" />
+    <result column="scope_type" property="scopeType" jdbcType="TINYINT" />
+    <result column="promotion_amount" property="promotionAmount" jdbcType="DECIMAL" />
+    <result column="order_full_amount" property="orderFullAmount" jdbcType="DECIMAL" />
+    <result column="promotion_max_amount" property="promotionMaxAmount" jdbcType="DECIMAL" />
+    <result column="discount_amount" property="discountAmount" jdbcType="DECIMAL" />
+    <result column="gift_name" property="giftName" jdbcType="VARCHAR" />
+    <result column="promotion_scope_amount" property="promotionScopeAmount" jdbcType="VARCHAR" />
+    <result column="apply_audit_name" property="applyAuditName" jdbcType="VARCHAR" />
+    <result column="apply_audit_time" property="applyAuditTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_user_name" property="createUserName" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="update_user_name" property="updateUserName" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="audit_status" property="auditStatus" jdbcType="TINYINT" />
+    <result column="ext_relation_id" property="extRelationId" jdbcType="VARCHAR" />
+    <result column="ext_relation_name" property="extRelationName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+	   <sql id="Base_Column_List" >
+	    id, owner_type, owner_id, owner_name, activity_id, coupon_name, coupon_no, coupon_use_type, 
+	    price, coupon_package_id, per_person_limit, per_order_limit, coupon_type_id, start_time, 
+	    end_time, pending_time, is_shared_subpromotion, is_shared_coupon, redirect_type, 
+	    redirect_url, is_must_apply, afford_cost_type, afford_cost_value, coupon_dispatch_type, 
+	    issue_start_time, issue_end_time, issued_total_amount, scope_type, promotion_amount, 
+	    order_full_amount, promotion_max_amount, discount_amount, gift_name, promotion_scope_amount, 
+	    apply_audit_name, apply_audit_time, create_time, create_user, create_user_name, update_time, 
+	    update_user, update_user_name, is_deleted, status, audit_status, ext_relation_id, 
+	    ext_relation_name
+	  </sql>
+  
+	<select id="listCouponsByChannelId" resultMap="BaseResultMap" >
+		SELECT 
+			c.id, c.owner_type, c.owner_id, c.owner_name, c.activity_id, c.coupon_name, c.coupon_type_id, c.start_time, c.
+		    end_time, c.pending_time, c.is_shared_subpromotion, c.is_shared_coupon, c.redirect_type, c.
+		    redirect_url, c.is_must_apply, c.afford_cost_type, c.afford_cost_value, c.coupon_dispatch_type, c.
+		    issue_start_time, c.issue_end_time, c.issued_total_amount, c.scope_type, c.promotion_amount, c.
+		    order_full_amount, c.promotion_max_amount, c.discount_amount, c.gift_name, c.promotion_scope_amount, c.
+		    apply_audit_name, c.apply_audit_time, c.create_time, c.create_user, c.create_user_name, c.update_time, c.
+		    update_user, c.update_user_name, c.is_deleted, c.status, c.audit_status
+		FROM
+		  mmc_coupon c 
+		WHERE c.coupon_dispatch_type = 1 
+		<foreach collection="statusList" item="item" index="index" separator="," open=" AND c.status IN (" close=")" >
+		#{item,jdbcType=TINYINT}
+		</foreach>
+		AND c.is_deleted = 0
+		UNION
+		SELECT 
+		    c.id, c.owner_type, c.owner_id, c.owner_name, c.activity_id, c.coupon_name, c.coupon_type_id, c.start_time, c.
+		    end_time, c.pending_time, c.is_shared_subpromotion, c.is_shared_coupon, c.redirect_type, c.
+		    redirect_url, c.is_must_apply, c.afford_cost_type, c.afford_cost_value, c.coupon_dispatch_type, c.
+		    issue_start_time, c.issue_end_time, c.issued_total_amount, c.scope_type, c.promotion_amount, c.
+		    order_full_amount, c.promotion_max_amount, c.discount_amount, c.gift_name, c.promotion_scope_amount, c.
+		    apply_audit_name, c.apply_audit_time, c.create_time, c.create_user, c.create_user_name, c.update_time, c.
+		    update_user, c.update_user_name, c.is_deleted, c.status, c.audit_status
+		FROM
+		  mmc_coupon c 
+		  INNER JOIN mmc_coupon_channel cc 
+		    ON c.id = cc.coupon_id 
+		    AND c.coupon_dispatch_type = 2 
+		    AND cc.channel_id = #{channelId,jdbcType=TINYINT} 
+		    AND c.is_deleted = 0
+			<foreach collection="statusList" item="item" index="index" separator="," open=" AND c.status IN (" close=")" >
+			#{item,jdbcType=TINYINT}
+			</foreach>
+	</select>
+	
+	<select id="queryEffectiveCoupon" resultType="java.lang.Integer" >
+		SELECT  a.`id` FROM `mmc_coupon` a  WHERE  a.`status`=2 AND a.`audit_status`=0 AND a.`is_deleted`=0 AND a.`start_time` &lt;= NOW() AND   EXISTS (SELECT b.* FROM  `mmc_issued_shop` b WHERE a.`id`=b.`promotion_id` 
+		AND b.promotion_type=3 AND b.`participate_status`=2   AND b.`is_deleted`=0)
+	UNION
+		SELECT  a.`id` FROM  `mmc_coupon` a JOIN  `mmc_activity` b ON a.`activity_id`=b.id WHERE  a.`status`=20 AND a.`is_deleted`=0 AND a.`start_time` &lt;= NOW() AND b.`status`=3 and  b.owner_type =3 AND b.`is_deleted`=0
+	</select>
+	
+	<select id="queryLossEffectiveCoupon" resultType="java.lang.Integer" >
+		SELECT  a.`id` FROM `mmc_coupon` a  WHERE  a.`status`=2 AND a.`audit_status`=0 AND a.`is_deleted`=0 AND a.`start_time` &lt;= NOW() AND NOT EXISTS (SELECT b.* FROM  `mmc_issued_shop` b WHERE a.`id`=b.`promotion_id` 
+		AND b.promotion_type=3 AND b.`participate_status`=2   AND b.`is_deleted`=0)
+	UNION
+		 SELECT  a.`id` FROM  `mmc_coupon` a JOIN  `mmc_activity` b ON a.`activity_id`=b.id WHERE  a.`status` =20 AND a.`is_deleted`=0 AND a.`start_time` &lt;= NOW() AND b.`status` =7 and  b.owner_type =3 AND b.`is_deleted`=0
+	</select>
+	
+	<select id="queryEndedCoupon" resultType="java.lang.Integer" >
+		SELECT a.`id` FROM  `mmc_coupon`   a  WHERE  a.`status`=3 AND a.`is_deleted`=0  AND a.`end_time` &lt;= NOW()  
+	</select>
+	
+	<select id="queryEndedCouponList" resultMap="BaseResultMap">
+		SELECT a.`id`,a.coupon_use_type,a.coupon_no,a.coupon_type_id FROM  `mmc_coupon`   a  WHERE  a.`status`=3 AND a.`is_deleted`=0  AND a.`end_time` &lt;= NOW()  
+	</select>
+	
+	<select id="queryStopCouponList" resultMap="BaseResultMap" >
+		SELECT a.`id`,a.coupon_use_type,a.coupon_no,a.coupon_type_id FROM  `mmc_coupon`   a  WHERE  a.`status` =4  AND a.`is_deleted`=0  AND a.`end_time` &lt;= NOW() and a.process_data_flag=0
+ 	</select>
+	
+	<select id="queryAuditNoPassCoupon" resultType="java.lang.Integer" >
+		SELECT  a.`id` FROM  `mmc_coupon` a  WHERE  a.`status`=1 AND a.`audit_status`=1 AND a.`is_deleted`=0
+		AND activity_id IN
+		<foreach collection="list" item="item" separator=","  index="index"
+				 open="(" close=")" >
+			#{item,jdbcType=INTEGER}
+		</foreach>
+	</select>
+	
+	<select id="queryCouponIdByActivityId" resultType="java.lang.Integer" >
+		SELECT `id` FROM  `mmc_coupon`  
+ 		<where>
+		  activity_id in
+		  <foreach collection="list" item="item" separator=","  index="index"
+            open="(" close=")" >
+			 	 #{item,jdbcType=INTEGER}
+		  </foreach>
+	  	</where> 
+	</select>
+	
+	<update id="updateById">
+		UPDATE   mmc_coupon SET `status`=#{status}
+		 <where>
+		  id in
+		  <foreach collection="list" item="item" separator=","  index="index"
+            open="(" close=")" >
+			 	 #{item,jdbcType=INTEGER}
+		  </foreach>
+	  	</where>  
+	</update>
+	
+	<update id="updateAuditStatusById">
+		UPDATE   mmc_coupon
+		SET `audit_status`=#{auditStatus,jdbcType=TINYINT},
+		update_time = #{updateTime,jdbcType=TIMESTAMP},
+		update_user = #{updateUser,jdbcType=VARCHAR},
+		update_user_name = #{updateUserName,jdbcType=VARCHAR}
+		<where>
+			id in
+			<foreach collection="list" item="item" separator=","  index="index"
+					 open="(" close=")" >
+				#{item,jdbcType=INTEGER}
+			</foreach>
+		</where>
+	</update>
+	
+	<update id="updateByActivityId">
+		UPDATE   mmc_coupon SET `status`=#{status}
+		 <where>
+		  activity_id in
+		  <foreach collection="list" item="item" separator=","  index="index"
+            open="(" close=")" >
+			 	 #{item,jdbcType=INTEGER}
+		  </foreach>
+	  	</where>  
+	</update>
+	
+	<update id="updateIssuedTotalAmount">
+	UPDATE 
+	  `mmc_coupon`
+	SET
+	  `issued_total_amount` = 
+	  (SELECT 
+	    SUM(cc.`issued_total_amount`) 
+	  FROM
+	    `mmc_coupon_channel` cc 
+	  WHERE cc.`coupon_id` = #{couponId,jdbcType=INTEGER}) 
+	WHERE id = #{couponId,jdbcType=INTEGER}
+	</update>
+	
+	<update id="updateDeletedByActivityId"  >
+		UPDATE `mmc_coupon` SET 
+			update_time = #{updateTime,jdbcType=TIMESTAMP},
+    		update_user = #{updateUser,jdbcType=VARCHAR},
+			update_user_name = #{updateUserName,jdbcType=VARCHAR},
+			is_deleted =#{isDeleted}
+		 WHERE activity_id=#{activityId}
+	</update>
+	
+	<select id="getCouponsByActivityId"
+            resultType="com.yz.demo.model.ext.CouponActivityList">
+        <![CDATA[
+			SELECT coupon.`id`,coupon.`start_time`,coupon.`end_time`,
+			coupon.`coupon_type_id`,dictionary.`dict_name` AS 'coupon_type_name',
+			coupon.`owner_type`,coupon.`owner_name`,
+			CASE coupon.`coupon_type_id`
+				WHEN 51 THEN coupon.promotion_amount
+				WHEN 52 THEN coupon.promotion_amount
+				WHEN 53 THEN coupon.promotion_amount
+				WHEN 54 THEN coupon.promotion_scope_amount
+				WHEN 55 THEN coupon.discount_amount
+				WHEN 56 THEN coupon.gift_name
+			END AS 'promotion',
+			CASE coupon.`coupon_type_id`
+				WHEN 51 THEN 0
+				WHEN 52 THEN coupon.order_full_amount
+				WHEN 53 THEN coupon.order_full_amount
+				WHEN 54 THEN coupon.promotion_scope_amount
+				WHEN 55 THEN coupon.order_full_amount
+				WHEN 56 THEN coupon.order_full_amount
+			END AS 'orderSum'
+			FROM `mmc_coupon` coupon
+			INNER JOIN `mmc_dictionary` dictionary ON coupon.`coupon_type_id` = dictionary.`dict_id`
+			WHERE 
+				coupon.is_deleted = 0 
+			AND dictionary.`dict_item` = 'COUPON_TYPE'
+			AND coupon.activity_id = #{activityId}
+		]]>
+    </select>
+	<select id="listCouponsByOpenId" resultType="com.yz.demo.resp.CouponInfo">
+	SELECT 
+	  c.id,
+	  c.owner_type,
+	  c.owner_id,
+	  c.owner_name,
+	  c.activity_id,
+	  c.coupon_name,
+	  c.coupon_type_id,
+	  c.start_time,
+	  c.end_time,
+	  c.pending_time,
+	  c.is_shared_coupon,
+	  c.is_shared_subpromotion,
+	  c.redirect_type,
+	  c.redirect_url,
+	  c.issue_start_time,
+	  c.issue_end_time,
+	  c.scope_type,
+	  c.promotion_amount,
+	  c.order_full_amount,
+	  c.promotion_max_amount,
+	  c.discount_amount,
+	  c.gift_name,
+	  uc.status,
+	  c.promotion_scope_amount,
+	  uc.coupon_code 
+	FROM
+	  mmc_coupon c 
+	  INNER JOIN mmc_user_coupon uc 
+	    ON c.id = uc.coupon_id 
+	    <foreach collection="typeList" item="item" index="index" separator="," open=" AND c.coupon_dispatch_type IN (" close=")" >
+		#{item,jdbcType=TINYINT}
+		</foreach>
+	    AND uc.open_id = #{openId,jdbcType=VARCHAR}
+	   	<foreach collection="statusList" item="item" index="index" separator="," open=" AND uc.status IN (" close=")" >
+		#{item,jdbcType=TINYINT}
+		</foreach>
+	    AND c.is_deleted = 0
+	ORDER BY c.id 
+	</select>
+	
+	<insert id="insertBatch" parameterType="java.util.List">
+	insert into mmc_coupon (id,owner_type, owner_id, owner_name, 
+      activity_id, coupon_name, coupon_type_id, 
+      start_time, end_time, pending_time, 
+      is_shared_subpromotion, is_shared_coupon, redirect_type, 
+      redirect_url, is_must_apply, afford_cost_type, 
+      afford_cost_value, coupon_dispatch_type, issue_start_time, 
+      issue_end_time, issued_total_amount, scope_type, 
+      promotion_amount, order_full_amount, promotion_max_amount, 
+      discount_amount, gift_name, promotion_scope_amount, 
+      apply_audit_name, apply_audit_time, create_time, 
+      create_user, create_user_name, update_time, 
+      update_user, update_user_name, is_deleted, 
+      status, audit_status)
+    values 
+	    <foreach collection="beanList" item="bean" index="index" separator=",">
+	    ( #{bean.id,jdbcType=INTEGER},#{bean.ownerType,jdbcType=TINYINT}, #{bean.ownerId,jdbcType=VARCHAR}, #{bean.ownerName,jdbcType=VARCHAR}, 
+	      #{bean.activityId,jdbcType=INTEGER}, #{bean.couponName,jdbcType=VARCHAR}, #{bean.couponTypeId,jdbcType=TINYINT}, 
+	      #{bean.startTime,jdbcType=TIMESTAMP}, #{bean.endTime,jdbcType=TIMESTAMP}, #{bean.pendingTime,jdbcType=TIMESTAMP}, 
+	      #{bean.isSharedSubpromotion,jdbcType=BIT}, #{bean.isSharedCoupon,jdbcType=BIT}, #{bean.redirectType,jdbcType=TINYINT}, 
+	      #{bean.redirectUrl,jdbcType=VARCHAR}, #{bean.isMustApply,jdbcType=BIT}, #{bean.affordCostType,jdbcType=TINYINT}, 
+	      #{bean.affordCostValue,jdbcType=DECIMAL}, #{bean.couponDispatchType,jdbcType=TINYINT}, #{bean.issueStartTime,jdbcType=TIMESTAMP}, 
+	      #{bean.issueEndTime,jdbcType=TIMESTAMP}, #{bean.issuedTotalAmount,jdbcType=INTEGER}, #{bean.scopeType,jdbcType=TINYINT}, 
+	      #{bean.promotionAmount,jdbcType=DECIMAL}, #{bean.orderFullAmount,jdbcType=DECIMAL}, #{bean.promotionMaxAmount,jdbcType=DECIMAL}, 
+	      #{bean.discountAmount,jdbcType=DECIMAL}, #{bean.giftName,jdbcType=VARCHAR}, #{bean.promotionScopeAmount,jdbcType=VARCHAR}, 
+	      #{bean.applyAuditName,jdbcType=VARCHAR}, #{bean.applyAuditTime,jdbcType=TIMESTAMP}, #{bean.createTime,jdbcType=TIMESTAMP}, 
+	      #{bean.createUser,jdbcType=VARCHAR}, #{bean.createUserName,jdbcType=VARCHAR}, #{bean.updateTime,jdbcType=TIMESTAMP}, 
+	      #{bean.updateUser,jdbcType=VARCHAR}, #{bean.updateUserName,jdbcType=VARCHAR}, #{bean.isDeleted,jdbcType=BIT}, 
+	      #{bean.status,jdbcType=TINYINT}, #{bean.auditStatus,jdbcType=TINYINT}
+	      )
+	    </foreach>
+	</insert>
+
+	<select id="listCouponsByCouponIds" resultType="com.yz.demo.model.ext.CouponDetail">
+		<![CDATA[
+			SELECT
+				mc.id,
+				mc.owner_type,
+				mc.owner_id,
+				mc.owner_name,
+				mc.activity_id,
+				mc.coupon_name,
+				mc.coupon_type_id,
+				mc.start_time,
+				mc.end_time,
+				mc.pending_time,
+				mc.is_shared_subpromotion,
+				mc.is_shared_coupon,
+				mc.redirect_type,
+				mc.redirect_url,
+				mc.is_must_apply,
+				mc.afford_cost_type,
+				mc.afford_cost_value,
+				mc.coupon_dispatch_type,
+				mc.issue_start_time,
+				mc.issue_end_time,
+				mc.scope_type,
+				mc.promotion_amount,
+				mc.order_full_amount,
+				mc.promotion_max_amount,
+				mc.discount_amount,
+				mc.gift_name,
+				mc.promotion_scope_amount,
+				mc.apply_audit_name,
+				mc.apply_audit_time,
+				mc.create_time,
+				mc.create_user,
+				mc.create_user_name,
+				mc.update_time,
+				mc.update_user,
+				mc.update_user_name,
+				mc.is_deleted,
+				mc.STATUS,
+				mc.audit_status,
+				IF(mc.coupon_dispatch_type = 1,
+				   mc.issued_total_amount,
+				   mcc.issued_total_amount) 'issued_total_amount',
+				CASE
+					WHEN
+						IF(mc.coupon_dispatch_type = 1,
+                            mc.issued_total_amount - COUNT(DISTINCT (muc.id)),
+                            mcc.issued_total_amount - SUM(IF(muc.channel_id = #{channelId}, 1, 0))) <= 0
+					THEN
+						0
+					ELSE IF(mc.coupon_dispatch_type = 1,
+                            mc.issued_total_amount - COUNT(DISTINCT (muc.id)),
+                            mcc.issued_total_amount - SUM(IF(muc.channel_id = #{channelId}, 1, 0)))
+				END 'remainingCount',
+				CASE
+        ]]>
+				<if test=" null != openId and openId != ''">
+					WHEN SUM(IF(muc.open_id = #{openId}, 1, 0)) > 0 THEN 2
+				</if>
+		<![CDATA[
+					WHEN
+						IF(mc.coupon_dispatch_type = 1,
+                            mc.issued_total_amount - COUNT(DISTINCT (muc.id)),
+                            mcc.issued_total_amount - SUM(IF(muc.channel_id = #{channelId}, 1, 0))) <= 0
+					THEN
+						3
+					WHEN
+						IF(mc.status != 2 AND mc.status != 3
+								AND mc.status != 20,
+							1,
+							0) = 1
+					THEN
+						4
+					WHEN
+						IF(mc.coupon_dispatch_type = 1,
+							mc.issue_start_time,
+							IFNULL(mcc.issue_start_time, 0)) > NOW()
+					THEN
+						0
+					WHEN
+						IF(mc.coupon_dispatch_type = 1,
+							mc.issue_start_time,
+							IFNULL(mcc.issue_start_time, 0)) < NOW()
+							AND IF(mc.coupon_dispatch_type = 1,
+							mc.issue_end_time,
+							IFNULL(mcc.issue_end_time, NOW())) >= NOW()
+					THEN
+						1
+        			ELSE 4
+				END 'issueStatus'
+		]]>
+			FROM
+				`mmc_coupon` mc
+					LEFT JOIN
+				mmc_coupon_channel mcc ON mc.id = mcc.coupon_id
+					LEFT JOIN
+				mmc_user_coupon muc ON mc.id = muc.coupon_id
+			WHERE
+				mc.`is_deleted` = 0
+				<foreach collection="couponIds" item="id" open=" AND mc.id IN (" separator="," close=")">
+					#{id}
+				</foreach>
+				<if test="channelId != null and channelId != ''">
+					AND (mc.coupon_dispatch_type = 1 OR mcc.channel_id = #{channelId})
+				</if>
+			GROUP BY mc.id
+
+	</select>
+
+	<!--根据活动id获取可用优惠券列表-->
+	<select id="getAvailableCouponByActivityId" resultType="com.yz.demo.model.ext.AvailableCouponList">
+		<![CDATA[
+			SELECT
+				`coupon`.`id`,
+				`coupon`.`owner_type`,
+				`coupon`.`owner_id`,
+				`coupon`.`owner_name`,
+				`coupon`.`activity_id`,
+				`coupon`.`coupon_name`,
+				`coupon`.`coupon_type_id`,
+				`dictionary_coupon_type`.`dict_name` AS `coupon_type_name`,
+				`coupon`.`start_time`,
+				`coupon`.`end_time`,
+				`coupon`.`pending_time`,
+				`coupon`.`coupon_dispatch_type`,
+				`coupon`.`issue_start_time`,
+				`coupon`.`issue_end_time`,
+				`coupon`.`issued_total_amount`,
+				(
+					`coupon`.issued_total_amount -
+					(SELECT
+						COUNT(id)
+					FROM
+						`mmc_user_coupon`
+					WHERE `coupon_id` = `coupon`.`id`)
+				) AS `remaining_count`,
+				`coupon`.`promotion_amount`,
+				`coupon`.`order_full_amount`,
+				`coupon`.`promotion_max_amount`,
+				`coupon`.`discount_amount`,
+				`coupon`.`gift_name`,
+				`coupon`.`promotion_scope_amount`,
+				`coupon`.`status`,
+				`dictionary`.`dict_name` AS `status_desc`,
+				CASE
+					WHEN `coupon`.issued_total_amount-(SELECT COUNT(id) FROM `mmc_user_coupon` WHERE `coupon_id` = `coupon`.`id`)=0 THEN 0
+					WHEN `coupon`.`issue_start_time` > NOW() THEN 0
+					WHEN `coupon`.`issue_start_time` < NOW() AND `coupon`.`issue_end_time` > NOW() THEN 0
+				END AS `use_status`
+			FROM `mmc_coupon` `coupon`
+				INNER JOIN `mmc_dictionary` `dictionary`
+				ON `coupon`.`status` = `dictionary`.`dict_id`
+				AND `dictionary`.`dict_item` = 'COMMON_STATUS'
+				INNER JOIN `mmc_dictionary` `dictionary_coupon_type`
+				ON `coupon`.`coupon_type_id` = `dictionary_coupon_type`.`dict_id`
+				AND `dictionary_coupon_type`.`dict_item` = 'COUPON_TYPE'
+			WHERE `coupon`.`is_deleted` = 0
+		]]>
+			<foreach collection="statusList" item="item" open=" AND `coupon`.`status` IN ( " close=" ) " separator=",">
+				#{item}
+			</foreach>
+		<![CDATA[
+				AND `coupon`.`coupon_dispatch_type` = 1
+				AND (`coupon`.pending_time IS NULL OR (`coupon`.pending_time IS NOT NULL AND `coupon`.pending_time < NOW()))
+				AND `coupon`.activity_id = #{activityId}
+
+			UNION
+
+			SELECT
+				`coupon`.`id`,
+				`coupon`.`owner_type`,
+				`coupon`.`owner_id`,
+				`coupon`.`owner_name`,
+				`coupon`.`activity_id`,
+				`coupon`.`coupon_name`,
+				`coupon`.`coupon_type_id`,
+				`dictionary_coupon_type`.`dict_name` AS `coupon_type_name`,
+				`coupon`.`start_time`,
+				`coupon`.`end_time`,
+				`coupon`.`pending_time`,
+				`coupon`.`coupon_dispatch_type`,
+				`coupon_channel`.`issue_start_time`,
+				`coupon_channel`.`issue_end_time`,
+				`coupon_channel`.`issued_total_amount`,
+				(
+					`coupon_channel`.issued_total_amount -
+					(SELECT
+						COUNT(id)
+					FROM
+						`mmc_user_coupon`
+					WHERE `coupon_id` = `coupon`.`id`)
+				) AS `remaining_count`,
+				`coupon`.`promotion_amount`,
+				`coupon`.`order_full_amount`,
+				`coupon`.`promotion_max_amount`,
+				`coupon`.`discount_amount`,
+				`coupon`.`gift_name`,
+				`coupon`.`promotion_scope_amount`,
+				`coupon`.`status`,
+				`dictionary`.`dict_name` AS `status_desc`,
+				CASE
+					WHEN `coupon_channel`.issued_total_amount-(SELECT COUNT(id) FROM `mmc_user_coupon` WHERE `coupon_id` = `coupon`.`id`)=0 THEN 0
+					WHEN `coupon_channel`.`issue_start_time` > NOW() THEN 0
+					WHEN `coupon_channel`.`issue_start_time` < NOW() AND `coupon_channel`.`issue_end_time` > NOW() THEN 0
+				END AS `use_status`
+			FROM `mmc_coupon` `coupon`
+				INNER JOIN `mmc_coupon_channel` `coupon_channel`
+				ON `coupon_channel`.`coupon_id` = `coupon`.id
+				AND `coupon_channel`.channel_id = 6
+				INNER JOIN `mmc_dictionary` `dictionary`
+				ON `coupon`.`status` = `dictionary`.`dict_id`
+				AND `dictionary`.`dict_item` = 'COMMON_STATUS'
+				INNER JOIN `mmc_dictionary` `dictionary_coupon_type`
+				ON `coupon`.`coupon_type_id` = `dictionary_coupon_type`.`dict_id`
+				AND `dictionary_coupon_type`.`dict_item` = 'COUPON_TYPE'
+			WHERE `coupon`.`is_deleted` = 0
+		]]>
+				<foreach collection="statusList" item="item" open=" AND `coupon`.`status` IN ( " close=" ) " separator=",">
+					#{item}
+				</foreach>
+		<![CDATA[
+				AND `coupon`.`coupon_dispatch_type` = 0
+				AND (`coupon`.pending_time IS NULL OR (`coupon`.pending_time IS NOT NULL AND `coupon`.pending_time < NOW()))
+				AND `coupon`.activity_id = #{activityId}
+		]]>
+	</select>
+
+	<select id="queryCouponIdByActivityIdAndStatus" resultType="java.lang.Integer" >
+		SELECT `id` FROM  `mmc_coupon`
+		<where>
+			activity_id in
+			<foreach collection="list" item="item" separator=","  index="index"
+					 open="(" close=")" >
+				#{item,jdbcType=INTEGER}
+			</foreach>
+			and `status`= #{status,jdbcType=TINYINT}
+		</where>
+	</select>
+
+	<select id="listCouponByPrizeActivityId" resultType="com.yz.demo.model.Coupon">
+		SELECT
+			mc.id, mc.start_time, mc.end_time
+		FROM
+			mmc_prize_activity pa
+				INNER JOIN
+			mmc_prize p ON pa.id = p.prize_activity_id
+				INNER JOIN
+			mmc_coupon mc ON mc.id = p.coupon_id
+		WHERE
+			pa.is_deleted = 0 AND mc.is_deleted = 0
+				AND p.is_deleted = 0
+				AND pa.id = #{prizeActivityId,jdbcType=INTEGER}
+	</select>
+
+	<select id="getIssuedInfo" resultType="java.lang.String" >
+		<choose>
+			<when test="ownerType == 1" >
+				SELECT
+				a.mall_name AS issuedname
+				FROM
+				mmc_issued_mall a
+				WHERE a.promotion_type = 3
+				AND a.promotion_id = #{couponId,jdbcType=INTEGER}
+				AND a.participate_status = 2
+			</when>
+			<otherwise>
+				SELECT
+				a.shop_name AS issuedname
+				FROM
+				mmc_issued_shop a
+				WHERE a.promotion_type = 3
+				AND a.promotion_id = #{couponId,jdbcType=INTEGER}
+				AND a.participate_status = 2
+			</otherwise>
+		</choose>
+	</select>
+</mapper>

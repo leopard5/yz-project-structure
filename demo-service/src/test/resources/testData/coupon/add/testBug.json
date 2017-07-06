@@ -1,0 +1,23 @@
+{
+    "activityId": "4619",
+    "couponName": "免费券",
+    "startTime": 1497493894000,
+    "endTime": 1497753094000,
+    "isSharedSubpromotion": false,
+    "isSharedCoupon": false,
+    "isMustApply": false,
+    "couponUseType": "1",
+    "couponDispatchType": "1",
+    "pendingTime": null,
+    "redirectType": "2",
+    "redirectUrl": null,
+    "perPersonLimit": 1,
+    "perOrderLimit": 1,
+    "issueStartTime": 1496630649000,
+    "issueEndTime": 1497062649000,
+    "issuedTotalAmount": 222,
+    "couponTypeId": "51",
+    "promotionAmount": 111,
+    "couponPackageId": 0,
+    "scopeType": 1
+}

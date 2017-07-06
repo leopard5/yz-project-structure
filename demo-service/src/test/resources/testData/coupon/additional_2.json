@@ -1,0 +1,14 @@
+{
+    "couponId":1,
+    "couponDispatchType":1,
+    "additionalChannels":[
+        {
+            "channelId":1,
+            "aditionalAmount":9
+        },
+        {
+            "channelId":2,
+            "aditionalAmount":7
+        }
+    ]
+}

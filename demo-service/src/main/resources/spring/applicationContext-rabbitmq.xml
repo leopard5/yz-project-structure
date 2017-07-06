@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+
+    http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.5.xsd">
+
+
+
+    <!--mmc virtual host /-->
+    <rabbit:connection-factory id="connectionFactoryMMC" addresses="${rabbitmq.addresses}"
+                               username="${rabbitmq.username}" password="${rabbitmq.password}" virtual-host="${rabbitmq.virtualHost.mmc}"/>
+
+    <rabbit:admin id="admin1" connection-factory="connectionFactoryMMC"/>
+
+    <rabbit:template id="mmcTemplate" exchange="mmcExchange" connection-factory="connectionFactoryMMC"
+                     message-converter="jsonMessageConverter"/>
+
+    <rabbit:queue id="mmc.rebate.result" name="mmc.rebate.result" durable="true" auto-delete="false"
+                  exclusive="false" declared-by="admin1"/>
+    <rabbit:queue id="mmc.promotion.end" name="mmc.promotion.end" durable="true" auto-delete="false"
+                  exclusive="false" declared-by="admin1"/>
+    <rabbit:queue id="mmc.promotion.end.order" name="mmc.promotion.end.order" durable="true" auto-delete="false"
+                  exclusive="false" declared-by="admin1"/>
+    <rabbit:queue id="mmc.promotion.end.cms" name="mmc.promotion.end.cms" durable="true" auto-delete="false"
+                  exclusive="false" declared-by="admin1"/>
+
+<!--  	<rabbit:template id="lotteryTemplate" exchange="mmcExchange" connection-factory="connectionFactoryMMC" -->
+<!--                      routing-key="mmc.lottery.result" message-converter="jsonMessageConverter"/> -->
+                     
+    <rabbit:queue id="mmc.lottery.result" name="mmc.lottery.result" durable="true" auto-delete="false"
+                  exclusive="false" declared-by="admin1"/>
+
+    <rabbit:topic-exchange id="mmcExchange" name="mmcExchange" durable="true" auto-delete="false"
+                           declared-by="admin1" >
+        <rabbit:bindings>
+            <rabbit:binding queue="mmc.rebate.result" pattern="mmc.rebate.result"></rabbit:binding>
+            <rabbit:binding queue="mmc.promotion.end" pattern="mmc.promotion.end"></rabbit:binding>
+            <rabbit:binding queue="mmc.promotion.end.order" pattern="mmc.promotion.end"></rabbit:binding>
+            <rabbit:binding queue="mmc.promotion.end.cms" pattern="mmc.promotion.end"></rabbit:binding>
+            <rabbit:binding queue="mmc.lottery.result" pattern="mmc.lottery.result"></rabbit:binding>
+            <!-- <rabbit:binding queue="rebateCompute" pattern="mmc.rebate.compute"></rabbit:binding>
+             <rabbit:binding queue="rebate" pattern="mmc.rebate.*"></rabbit:binding>-->
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+	<rabbit:annotation-driven />
+	
+	<bean id="rabbitListenerContainerFactory"
+	    class="org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory">	
+	    <property name="messageConverter" ref="jsonMessageConverter" />      
+	    <property name="connectionFactory" ref="connectionFactoryMMC" />
+	    <property name="concurrentConsumers" value="1" />
+	    <property name="maxConcurrentConsumers" value="10" />
+	</bean>
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	
+    <dubbo:registry protocol="zookeeper" address="${zk.hosts}" />
+    
+	<dubbo:reference id="omsShopInfoService" interface="com.redstar.digital.open.service.OmsShopInfoService" timeout="20000" retries="0" version="${digital.dubbo.version}" check="false" />
+	<dubbo:reference id="omsMarketInfoService" interface="com.redstar.digital.open.service.OmsMarketInfoService" timeout="20000" retries="0" version="${digital.dubbo.version}" check="false" />
+	<dubbo:reference id="productShopGoodsService" interface="com.redstar.digital.open.service.ProductShopGoodsService" timeout="20000" retries="0" version="${digital.dubbo.version}" check="false" />
+	<dubbo:reference id="userService" interface="com.chinaredstar.uc.dubbo.core.api.IUserService" timeout="20000" retries="0" version="${uc.dubbo.version}" check="false"></dubbo:reference>
+	<dubbo:reference id="giftService" interface="com.chinaredstar.uc.dubbo.core.api.IGiftService" timeout="20000" retries="0" version="${uc.dubbo.version}" check="false"></dubbo:reference>
+	<dubbo:reference id="externalPromotionService" interface="com.chinaredstar.ordercenter.external.promotion.IExternalPromotionService" timeout="20000" retries="0" version="${order.dubbo.version}" check="false" />
+	<dubbo:reference id="productBaseService" interface="com.redstar.digital.open.service.ProductBaseService" timeout="20000" retries="0" version="${digital.dubbo.version}" check="false" />
+	<dubbo:reference id="cmsIndexPromotionGoodsService" interface="com.chinaredstar.cms.api.service.CmsIndexPromotionGoodsService" timeout="20000" retries="0" check="false" />
+</beans>

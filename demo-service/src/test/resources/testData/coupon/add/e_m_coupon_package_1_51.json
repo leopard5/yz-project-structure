@@ -1,0 +1,15 @@
+{
+    "activityId": "12",
+    "couponName": "333",
+    "startTime": 1495965657000,
+    "endTime": 1498816857000,
+    "affordCostValue": 0,
+    "isSharedSubpromotion": false,
+    "isSharedCoupon": false,
+    "isMustApply": false,
+    "couponUseType": "4",
+    "couponTypeId": "51",
+    "promotionAmount": 2,
+    "couponPackageId": 3,
+    "affordCostType": "1"
+}

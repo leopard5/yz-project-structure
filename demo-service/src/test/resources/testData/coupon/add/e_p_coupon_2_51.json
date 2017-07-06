@@ -1,0 +1,57 @@
+{
+    "ownerType": 1,
+    "ownerId": "1",
+    "ownerName": "平台",
+    "activityId": 1,
+    "couponName": "E端优惠券[分渠道发券][无门槛现金抵用券]测试1",
+    "couponTypeId": 51,
+    "startTime": 1482938806000,
+    "endTime": 1484666806000,
+    "pendingTime": 1484666806000,
+    "isSharedCoupon": false,
+    "isSharedSubpromotion": false,
+    "redirectType": 1,
+    "redirectUrl": "http://www.baidu.com",
+    "isMustApply": true,
+    "affordCostType": 1,
+    "affordCostValue": 1,
+    "couponDispatchType": 2,
+    "issueEndTime": 1484580406000,
+    "issueStartTime": 1482935206000,
+    "issuedTotalAmount": 10,
+    "scopeType": 1,
+    "promotionAmount": 10.01,
+    "orderFullAmount": 1000.01,
+    "discountAmount": 0.95,
+    "promotionMaxAmount": 30.03,
+    "promotionScopeAmount": "",
+    "giftName": "test string",
+    "couponChannels": [
+        {
+            "channelId": 1,
+            "issuedTotalAmount": 1
+        },
+        {
+            "channelId": 2,
+            "issuedTotalAmount": 2
+        },
+        {
+            "channelId": 3,
+            "issueEndTime": 1485231993882,
+            "issueStartTime": 1483586793883,
+            "issuedTotalAmount": 3
+        },
+        {
+            "channelId": 4,
+            "issueEndTime": 1485231993882,
+            "issueStartTime": 1483586793883,
+            "issuedTotalAmount": 4
+        },
+        {
+            "channelId": 5,
+            "issueEndTime": 1485231993882,
+            "issueStartTime": 1483586793883,
+            "issuedTotalAmount": 5
+        }
+    ]
+}

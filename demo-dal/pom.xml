@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.yz</groupId>
+        <artifactId>demo-all</artifactId>
+        <version>1.0.0.RELEASE</version>
+	</parent>
+	
+	<artifactId>demo-dal</artifactId>
+	<version>${dal.version}</version>
+	
+	 <dependencies>
+        <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>        
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+			<groupId>com.chinaredstar</groupId>
+			<artifactId>p-trade-oc-api</artifactId>
+			<version>1.4.1.RELEASE</version>
+		</dependency>
+        <dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper</artifactId>
+		    <version>4.1.6</version>
+		</dependency>			
+		<!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
+		<dependency>
+		    <groupId>tk.mybatis</groupId>
+		    <artifactId>mapper</artifactId>
+		    <version>3.3.8</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.16</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.chinaredstar</groupId>
+			<artifactId>perseus</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.yz</groupId>
+			<artifactId>demo-core</artifactId>
+			<version>${core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yz</groupId>
+    		<artifactId>demo-api</artifactId>
+			<version>${api.version}</version>
+		</dependency>
+    </dependencies>
+    
+
+</project>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+    http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+<!-- 	<bean id="invokeLogger" class="com.yz.demo.dubbo.InvokeLogger"></bean> -->
+  
+    <dubbo:monitor protocol="registry" />
+
+    <!-- 提供方应用信息 -->
+    <dubbo:application name="mmc-service"/>
+
+	<!--记录调用日志 -->
+<!-- 	<dubbo:provider timeout="60000" filter="invokeLogFilter,default" /> -->
+  	<dubbo:provider timeout="60000" filter="default" />
+  
+    <!-- dubbo服务暴露端口 -->
+    <dubbo:protocol name="dubbo" port="${dubbo.port}" />
+
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry protocol="zookeeper" address="${zk.hosts}" />
+
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IActivityAuditLogService" ref="activityAuditLogService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IActivityService" ref="activityService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IActivityIssuedService" ref="activityIssuedService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IActivityTemplateService" ref="activityTemplateService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IActivityTemplateTypeService" ref="activityTemplateTypeService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.ICouponChannelService" ref="couponChannelService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.ICouponService" ref="couponService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IIssuedAuditLogService" ref="issuedAuditLogService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IDictionaryService" ref="dictionaryService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IIssuedMallService" ref="issuedMallService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IIssuedShopService" ref="issuedShopService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IItemPromotionScopeService" ref="itemPromotionScopeService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IItemPromotionService" ref="itemPromotionService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IPromotionApplyScopeService" ref="promotionApplyScopeService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IPromotionAuditLogService" ref="promotionAuditLogService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.ISubpromotionService" ref="subpromotionService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IUsedPromotionService" ref="usedPromotionService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IUserBookingService" ref="userBookingService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IUserCouponService" ref="userCouponService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IPromotionService" ref="promotionService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.ICouponPackageService" ref="couponPackageService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.ILotteryPrizeItemService" ref="lotteryPrizeItemService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IPrizeActivityService" ref="prizeActivityService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IPrizeService" ref="prizeService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IPrizeRecordService" ref="prizeRecordService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+
+    <!--C端接口-->
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.client.IActivityClientService" ref="activityClientService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.client.ICouponClientService" ref="couponClientService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.client.IItemPromotionClientService" ref="itemPromotionServiceClient" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.IPromotionProcessService" ref="promotionProcessService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.client.IStoreCouponQueryService" ref="storeCouponQueryService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.client.IRushPurchaseService" ref="rushPurchaseService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+    <dubbo:service version="${mmc.dubbo.version}" interface="com.yz.demo.service.client.IPrizeActivityClientService" ref="prizeActivityClientService" timeout="${mmc.dubbo.timeout}" retries="0"/>
+</beans>
