@@ -2,7 +2,7 @@ package com.yz.demo.req;
 
 import java.io.Serializable;
 
-public class UserGeneralReq implements Serializable {
+public class UserGeneralDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String ownerId;
@@ -11,11 +11,11 @@ public class UserGeneralReq implements Serializable {
 	private String operatorName;
 	private String mallId;
 
-	public UserGeneralReq() {
+	public UserGeneralDTO() {
 	}
 
-	public UserGeneralReq(Integer id, String ownerId, Byte ownerType, String operator, String operatorName,
-			String mallId) {
+	public UserGeneralDTO(Integer id, String ownerId, Byte ownerType, String operator, String operatorName,
+						  String mallId) {
 		this.id = id;
 		this.ownerId = ownerId;
 		this.ownerType = ownerType;
@@ -72,10 +72,5 @@ public class UserGeneralReq implements Serializable {
 		this.mallId = mallId;
 	}
 
-	@Override
-	public String toString() {
-		return "UserGeneralReq [id=" + id + ", ownerId=" + ownerId + ", ownerType=" + ownerType + ", updateUser="
-				+ operator + ", updateUserName=" + operatorName + ", mallId=" + mallId + "]";
-	}
 
 }

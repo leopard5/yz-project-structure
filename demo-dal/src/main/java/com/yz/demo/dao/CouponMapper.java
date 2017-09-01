@@ -2,7 +2,7 @@ package com.yz.demo.dao;
 
 import com.yz.demo.model.Coupon;
 import com.yz.demo.model.CouponExample;
-import com.yz.demo.req.CouponQueryReq;
+import com.yz.demo.req.CouponQueryDTO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
@@ -40,7 +40,7 @@ public interface CouponMapper {
 
     Coupon selectByPrimaryKeyForUpdate(Integer id);
 
-    List<Coupon> queryCoupon(CouponQueryReq couponQuery);
+    List<Coupon> queryCoupon(CouponQueryDTO couponQuery);
 
 
     List<Coupon> selectByCouponNo(@Param("couponNo") String couponNo);

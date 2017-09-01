@@ -925,7 +925,7 @@
 		FOR UPDATE
 	</select>
 	
-	<select id="queryCoupon" resultMap="BaseResultMap" parameterType="com.yz.demo.req.CouponQueryReq">
+	<select id="queryCoupon" resultMap="BaseResultMap" parameterType="com.yz.demo.req.CouponQueryDTO">
 		SELECT
 		 <choose>
           <when test="returnFields!=null">${returnFields}</when>

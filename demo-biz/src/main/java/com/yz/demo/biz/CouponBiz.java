@@ -7,8 +7,8 @@ import com.yz.demo.dal.CouponDal;
 import com.yz.demo.dao.CouponMapper;
 import com.yz.demo.dao.ext.CouponExtMapper;
 import com.yz.demo.model.Coupon;
-import com.yz.demo.req.CouponQueryReq;
-import com.yz.demo.req.UserGeneralReq;
+import com.yz.demo.req.CouponQueryDTO;
+import com.yz.demo.req.UserGeneralDTO;
 import com.yz.demo.resp.MmcResultCode;
 import com.yz.demo.resp.QueryResultInfo;
 import org.slf4j.Logger;
@@ -46,7 +46,7 @@ public class CouponBiz {
      * @version 1.0.0
      */
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, rollbackFor = Exception.class)
-    public Integer deleteCoupon(UserGeneralReq bean) {
+    public Integer deleteCoupon(UserGeneralDTO bean) {
         Coupon coupon = couponDal.getCoupon(bean.getId());
         if (coupon == null) {
             throw new CommonBizException(MmcResultCode.DATA_NOT_EXIST, "优惠券");
@@ -123,7 +123,7 @@ public class CouponBiz {
      * @version 1.0.0
      */
     @Transactional(readOnly = true)
-    public QueryResultInfo<Coupon> queryCoupon(CouponQueryReq couponQuery) {
+    public QueryResultInfo<Coupon> queryCoupon(CouponQueryDTO couponQuery) {
         QueryResultInfo<Coupon> queryResult = new QueryResultInfo<Coupon>();
         // 使用分页插件PageHelper实现分页功能
         PageHelper.startPage(couponQuery.getPageNo(), couponQuery.getPageSize());

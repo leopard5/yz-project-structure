@@ -7,16 +7,16 @@ import org.springframework.cglib.beans.BeanCopier;
 
 import com.yz.demo.model.Coupon;
 import com.yz.demo.model.CouponQuery;
-import com.yz.demo.req.CouponQueryReq;
-import com.yz.demo.req.CouponReq;
+import com.yz.demo.req.CouponQueryDTO;
+import com.yz.demo.req.CouponDTO;
 import com.yz.demo.resp.CouponInfo;
 import com.yz.demo.resp.QueryResultInfo;
 
 public abstract class CouponConvertor {
 
 	private static final BeanCopier beanCopierForCouponInfo = BeanCopier.create(Coupon.class, CouponInfo.class, false);
-	private static final BeanCopier beanCopierForCoupon = BeanCopier.create(CouponReq.class, Coupon.class, false);
-	private static final BeanCopier beanCopierForCouponQuery = BeanCopier.create(CouponQueryReq.class, CouponQuery.class, false);
+	private static final BeanCopier beanCopierForCoupon = BeanCopier.create(CouponDTO.class, Coupon.class, false);
+	private static final BeanCopier beanCopierForCouponQuery = BeanCopier.create(CouponQueryDTO.class, CouponQuery.class, false);
 
 	public static CouponInfo toCouponInfo(Coupon coupon)
 	{
@@ -28,7 +28,7 @@ public abstract class CouponConvertor {
 		return couponInfo;
 	}
 
-	public static Coupon toCoupon(CouponReq couponReq)
+	public static Coupon toCoupon(CouponDTO couponReq)
 	{
 		Coupon coupon = new Coupon();
 		beanCopierForCoupon.copy(couponReq, coupon, null);
@@ -47,19 +47,19 @@ public abstract class CouponConvertor {
 		return couponInfoList;
 	}
 
-	public static List<Coupon> toCouponList(List<CouponReq> couponReqList)
+	public static List<Coupon> toCouponList(List<CouponDTO> couponReqList)
 	{
 		if (couponReqList == null || couponReqList.isEmpty()) {
 			return null;
 		}
 		List<Coupon> couponList = new ArrayList<Coupon>(couponReqList.size());
-		for (CouponReq couponReq : couponReqList) {
+		for (CouponDTO couponReq : couponReqList) {
 			couponList.add(toCoupon(couponReq));
 		}
 		return couponList;
 	}
 	
-	public static CouponQuery toCouponQuery(CouponQueryReq couponQueryReq)
+	public static CouponQuery toCouponQuery(CouponQueryDTO couponQueryReq)
 	{
 		if (couponQueryReq== null) {
 			return null;

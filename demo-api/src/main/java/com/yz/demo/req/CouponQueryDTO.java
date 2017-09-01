@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-public class CouponQueryReq extends QueryReq {
+public class CouponQueryDTO extends QueryDTO {
 	
 	/**   
 	 * @Fields serialVersionUID : 序列化版本号 

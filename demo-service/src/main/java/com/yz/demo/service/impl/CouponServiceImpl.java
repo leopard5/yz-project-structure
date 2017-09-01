@@ -4,9 +4,9 @@ import com.yz.demo.biz.CouponBiz;
 import com.yz.demo.biz.convertor.CouponConvertor;
 import com.yz.demo.dal.CouponDal;
 import com.yz.demo.model.Coupon;
-import com.yz.demo.req.CouponQueryReq;
-import com.yz.demo.req.CouponReq;
-import com.yz.demo.req.UserGeneralReq;
+import com.yz.demo.req.CouponQueryDTO;
+import com.yz.demo.req.CouponDTO;
+import com.yz.demo.req.UserGeneralDTO;
 import com.yz.demo.resp.CouponInfo;
 import com.yz.demo.resp.MmcResult;
 import com.yz.demo.resp.MmcResultCode;
@@ -40,7 +40,7 @@ public class CouponServiceImpl implements ICouponService {
      * @Version: <1.0>
      */
     @Override
-    public MmcResult<Integer> deleteCoupon(UserGeneralReq bean) {
+    public MmcResult<Integer> deleteCoupon(UserGeneralDTO bean) {
         MmcResult<Integer> result = MmcResult.newSuccess();
 
         if (isNull(result, "优惠券ID", bean.getId())) {
@@ -63,7 +63,7 @@ public class CouponServiceImpl implements ICouponService {
      * @Version: <1.0>
      */
     @Override
-    public MmcResult<Integer> createCoupon(CouponReq couponReq) {
+    public MmcResult<Integer> createCoupon(CouponDTO couponReq) {
         MmcResult<Integer> result = MmcResult.newSuccess();
 
         Coupon coupon = CouponConvertor.toCoupon(couponReq);
@@ -84,7 +84,7 @@ public class CouponServiceImpl implements ICouponService {
      * @Version: <1.0>
      */
     @Override
-    public MmcResult<Integer> updateCoupon(CouponReq couponReq) {
+    public MmcResult<Integer> updateCoupon(CouponDTO couponReq) {
         MmcResult<Integer> result = MmcResult.newSuccess();
 
         Coupon coupon = CouponConvertor.toCoupon(couponReq);
@@ -104,7 +104,7 @@ public class CouponServiceImpl implements ICouponService {
      * @Version: <1.0>
      */
     @Override
-    public MmcResult<QueryResultInfo<CouponInfo>> queryCoupon(CouponQueryReq couponQueryReq) {
+    public MmcResult<QueryResultInfo<CouponInfo>> queryCoupon(CouponQueryDTO couponQueryReq) {
         MmcResult<QueryResultInfo<CouponInfo>> result = MmcResult.newSuccess();
 
         QueryResultInfo<Coupon> resultInfo = couponBiz.queryCoupon(couponQueryReq);

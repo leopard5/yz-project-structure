@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class CouponReq implements Serializable {
+public class CouponDTO implements Serializable {
 
     /**
      * @Fields serialVersionUID : 序列化版本号

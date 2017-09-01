@@ -6,7 +6,7 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 @ApiModel("分页输入参数基类")
-public class QueryReq implements Serializable {
+public class QueryDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
