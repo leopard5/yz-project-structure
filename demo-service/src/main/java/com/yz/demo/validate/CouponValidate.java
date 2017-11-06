@@ -1,7 +1,7 @@
 package com.yz.demo.validate;
 
 import com.yz.demo.model.Coupon;
-import com.yz.demo.resp.MmcResult;
+import com.yz.demo.resp.DemoResult;
 import com.yz.demo.resp.MmcResultCode;
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import static com.yz.demo.biz.util.ValidationUtil.*;
 
 public class CouponValidate {
 
-    public static boolean validateForCreate(Coupon coupon, MmcResult<?> message, boolean isUpdateFlag) {
+    public static boolean validateForCreate(Coupon coupon, DemoResult<?> message, boolean isUpdateFlag) {
 
         if (isNull(message, Coupon.OWNER_TYPE, coupon.getOwnerType())) {
             return false;
@@ -112,7 +112,7 @@ public class CouponValidate {
         return true;
     }
 
-    private static boolean couponTimeCheck(MmcResult<?> message, Coupon coupon, Date issueStartTime, Date issueEndTime, String target) {
+    private static boolean couponTimeCheck(DemoResult<?> message, Coupon coupon, Date issueStartTime, Date issueEndTime, String target) {
         // 优惠券发券开始时间为空 报错
         if (issueStartTime == null) {
             message.setErrorCode(MmcResultCode.FIELD_NOT_ALLOWED_EMPTY, target + "发券开始时间");
@@ -152,7 +152,7 @@ public class CouponValidate {
     }
 
 
-    public static boolean validateForUpdate(Coupon coupon, MmcResult<?> message) {
+    public static boolean validateForUpdate(Coupon coupon, DemoResult<?> message) {
         if (isNull(message, Coupon.ID, coupon.getId())) {
             return false;
         }

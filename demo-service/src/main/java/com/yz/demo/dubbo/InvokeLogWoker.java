@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.dubbo.rpc.Result;
 import com.alibaba.fastjson.JSON;
-import com.yz.demo.resp.MmcResult;
+import com.yz.demo.resp.DemoResult;
 import com.yz.demo.resp.MmcResultCode;
 
 public class InvokeLogWoker implements Runnable {
@@ -74,7 +74,7 @@ public class InvokeLogWoker implements Runnable {
 					}
 				}
 				else {
-					MmcResult<?> message2 = (MmcResult<?>) result.getValue();
+					DemoResult<?> message2 = (DemoResult<?>) result.getValue();
 					status = message2.getCode();
 					returnMessage = message2.getMessage();
 					if (status.equals("200")) {

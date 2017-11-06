@@ -7,7 +7,7 @@ import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
 @ApiModel("分页输出结果基类")
-public class QueryResultInfo<E> implements Serializable{
+public class QueryResult<E> implements Serializable{
 	private static final long serialVersionUID = 8189778548880809030L;
 	
 	/**   

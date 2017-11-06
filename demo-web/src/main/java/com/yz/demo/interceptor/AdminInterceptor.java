@@ -1,7 +1,7 @@
 package com.yz.demo.interceptor;
 
 import com.alibaba.fastjson.JSON;
-import com.yz.demo.resp.MmcResult;
+import com.yz.demo.resp.DemoResult;
 import com.yz.demo.resp.MmcResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +29,7 @@ public class AdminInterceptor implements HandlerInterceptor {
 
             return true;
         } catch (Exception e) {
-            returnErrorJson(response, JSON.toJSONString(MmcResult.newError(MmcResultCode.SYS_ERROR)));
+            returnErrorJson(response, JSON.toJSONString(DemoResult.newError(MmcResultCode.SYS_ERROR)));
             return false;
         }
 

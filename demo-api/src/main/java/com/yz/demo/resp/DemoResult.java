@@ -6,7 +6,7 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 @ApiModel(value = "Rest result", description = "请求结果")
-public class MmcResult<T> implements Serializable {
+public class DemoResult<T> implements Serializable {
     private static final long serialVersionUID = -4696898674758059398L;
     
     @ApiModelProperty(value = "结果代码")
@@ -18,7 +18,7 @@ public class MmcResult<T> implements Serializable {
     @ApiModelProperty(value = "操作标识")
     private boolean success;
     
-    public MmcResult(String code, String message, boolean success, T dataMap){
+    public DemoResult(String code, String message, boolean success, T dataMap){
 	    this.setCode(code);
 	    this.setMessage(message);
 	    this.setSuccess(success);
@@ -33,8 +33,8 @@ public class MmcResult<T> implements Serializable {
 	 * @param value
 	 * @return
 	 */
-	public static <T> MmcResult<T> newInstance(MmcResultCode resultCode, boolean success, T value) {
-		return new MmcResult<T>(resultCode.code, resultCode.message, success, value);
+	public static <T> DemoResult<T> newInstance(MmcResultCode resultCode, boolean success, T value) {
+		return new DemoResult<T>(resultCode.code, resultCode.message, success, value);
 	}
 
 	/**
@@ -42,8 +42,8 @@ public class MmcResult<T> implements Serializable {
 	 * 构建成功对象实例
 	 * @return
 	 */
-	public static <T> MmcResult<T> newSuccess() {
-		return new MmcResult<T>(MmcResultCode.SUCCESS.code,
+	public static <T> DemoResult<T> newSuccess() {
+		return new DemoResult<T>(MmcResultCode.SUCCESS.code,
 				MmcResultCode.SUCCESS.message, true, null);
 	}
 
@@ -52,8 +52,8 @@ public class MmcResult<T> implements Serializable {
 	 * 构建成功对象实例
 	 * @return
 	 */
-	public static <T> MmcResult<T> newSuccess(T value) {
-		return new MmcResult<T>(MmcResultCode.SUCCESS.code,
+	public static <T> DemoResult<T> newSuccess(T value) {
+		return new DemoResult<T>(MmcResultCode.SUCCESS.code,
 				MmcResultCode.SUCCESS.message, true, value);
 	}
 	
@@ -63,13 +63,13 @@ public class MmcResult<T> implements Serializable {
 	 * @param errorCode
 	 * @return
 	 */
-	public static <T> MmcResult<T> newError(MmcResultCode errorCode) {
-		return new MmcResult<T>(errorCode.code, errorCode.message, false, null);
+	public static <T> DemoResult<T> newError(MmcResultCode errorCode) {
+		return new DemoResult<T>(errorCode.code, errorCode.message, false, null);
 	}
 	
-	public static <T> MmcResult<T> buildError(MmcResultCode resultCode, Object... args)
+	public static <T> DemoResult<T> buildError(MmcResultCode resultCode, Object... args)
 	{
-		MmcResult<T> r = new MmcResult<T>("", "", false, null);		
+		DemoResult<T> r = new DemoResult<T>("", "", false, null);
 		r.setCode(resultCode.getCode());
 		r.setFormatMessage(resultCode.getMessage(), args);
 		
@@ -81,7 +81,7 @@ public class MmcResult<T> implements Serializable {
 	 * 设置错误编码
 	 * @param errorCode
 	 */
-	public  MmcResult<T> setErrorCode(MmcResultCode errorCode){
+	public DemoResult<T> setErrorCode(MmcResultCode errorCode){
 		if(errorCode ==null ) return null;
 		
 		this.code = errorCode.code;
@@ -96,7 +96,7 @@ public class MmcResult<T> implements Serializable {
 	 * @param args
 	 * @return
 	 */
-	public  MmcResult<T> setErrorCode(MmcResultCode errorCode, Object... args){
+	public DemoResult<T> setErrorCode(MmcResultCode errorCode, Object... args){
 		if(errorCode ==null ) return null;
 		
 		this.code = errorCode.code;

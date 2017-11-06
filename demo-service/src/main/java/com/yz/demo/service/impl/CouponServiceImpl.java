@@ -7,10 +7,10 @@ import com.yz.demo.model.Coupon;
 import com.yz.demo.req.CouponQueryDTO;
 import com.yz.demo.req.CouponDTO;
 import com.yz.demo.req.UserGeneralDTO;
-import com.yz.demo.resp.CouponInfo;
-import com.yz.demo.resp.MmcResult;
+import com.yz.demo.resp.CouponODTO;
+import com.yz.demo.resp.DemoResult;
 import com.yz.demo.resp.MmcResultCode;
-import com.yz.demo.resp.QueryResultInfo;
+import com.yz.demo.resp.QueryResult;
 import com.yz.demo.service.ICouponService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +40,8 @@ public class CouponServiceImpl implements ICouponService {
      * @Version: <1.0>
      */
     @Override
-    public MmcResult<Integer> deleteCoupon(UserGeneralDTO bean) {
-        MmcResult<Integer> result = MmcResult.newSuccess();
+    public DemoResult<Integer> deleteCoupon(UserGeneralDTO bean) {
+        DemoResult<Integer> result = DemoResult.newSuccess();
 
         if (isNull(result, "优惠券ID", bean.getId())) {
             return result;
@@ -63,8 +63,8 @@ public class CouponServiceImpl implements ICouponService {
      * @Version: <1.0>
      */
     @Override
-    public MmcResult<Integer> createCoupon(CouponDTO couponReq) {
-        MmcResult<Integer> result = MmcResult.newSuccess();
+    public DemoResult<Integer> createCoupon(CouponDTO couponReq) {
+        DemoResult<Integer> result = DemoResult.newSuccess();
 
         Coupon coupon = CouponConvertor.toCoupon(couponReq);
         if (!validateForCreate(coupon, result, false)) {
@@ -84,8 +84,8 @@ public class CouponServiceImpl implements ICouponService {
      * @Version: <1.0>
      */
     @Override
-    public MmcResult<Integer> updateCoupon(CouponDTO couponReq) {
-        MmcResult<Integer> result = MmcResult.newSuccess();
+    public DemoResult<Integer> updateCoupon(CouponDTO couponReq) {
+        DemoResult<Integer> result = DemoResult.newSuccess();
 
         Coupon coupon = CouponConvertor.toCoupon(couponReq);
         if (!validateForUpdate(coupon, result)) {
@@ -104,10 +104,10 @@ public class CouponServiceImpl implements ICouponService {
      * @Version: <1.0>
      */
     @Override
-    public MmcResult<QueryResultInfo<CouponInfo>> queryCoupon(CouponQueryDTO couponQueryReq) {
-        MmcResult<QueryResultInfo<CouponInfo>> result = MmcResult.newSuccess();
+    public DemoResult<QueryResult<CouponODTO>> queryCoupon(CouponQueryDTO couponQueryReq) {
+        DemoResult<QueryResult<CouponODTO>> result = DemoResult.newSuccess();
 
-        QueryResultInfo<Coupon> resultInfo = couponBiz.queryCoupon(couponQueryReq);
+        QueryResult<Coupon> resultInfo = couponBiz.queryCoupon(couponQueryReq);
         result.setDataMap(CouponConvertor.toQueryResultInfo(resultInfo));
         return result;
     }

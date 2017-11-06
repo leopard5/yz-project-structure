@@ -10,7 +10,7 @@ import com.yz.demo.model.Coupon;
 import com.yz.demo.req.CouponQueryDTO;
 import com.yz.demo.req.UserGeneralDTO;
 import com.yz.demo.resp.MmcResultCode;
-import com.yz.demo.resp.QueryResultInfo;
+import com.yz.demo.resp.QueryResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -123,8 +123,8 @@ public class CouponBiz {
      * @version 1.0.0
      */
     @Transactional(readOnly = true)
-    public QueryResultInfo<Coupon> queryCoupon(CouponQueryDTO couponQuery) {
-        QueryResultInfo<Coupon> queryResult = new QueryResultInfo<Coupon>();
+    public QueryResult<Coupon> queryCoupon(CouponQueryDTO couponQuery) {
+        QueryResult<Coupon> queryResult = new QueryResult<Coupon>();
         // 使用分页插件PageHelper实现分页功能
         PageHelper.startPage(couponQuery.getPageNo(), couponQuery.getPageSize());
         List<Coupon> couponList = couponMapper.queryCoupon(couponQuery);

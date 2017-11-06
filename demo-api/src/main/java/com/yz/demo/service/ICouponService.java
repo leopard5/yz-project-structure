@@ -3,9 +3,9 @@ package com.yz.demo.service;
 import com.yz.demo.req.CouponQueryDTO;
 import com.yz.demo.req.CouponDTO;
 import com.yz.demo.req.UserGeneralDTO;
-import com.yz.demo.resp.CouponInfo;
-import com.yz.demo.resp.MmcResult;
-import com.yz.demo.resp.QueryResultInfo;
+import com.yz.demo.resp.CouponODTO;
+import com.yz.demo.resp.DemoResult;
+import com.yz.demo.resp.QueryResult;
 
 public interface ICouponService {
 
@@ -17,7 +17,7 @@ public interface ICouponService {
      * @author yazhong.qi
      * @version 1.0.0
      */
-    MmcResult<Integer> deleteCoupon(UserGeneralDTO bean);
+    DemoResult<Integer> deleteCoupon(UserGeneralDTO bean);
 
     /**
      * 创建优惠券
@@ -27,7 +27,7 @@ public interface ICouponService {
      * @author yazhong.qi
      * @version 1.0.0
      */
-    MmcResult<Integer> createCoupon(CouponDTO couponReq);
+    DemoResult<Integer> createCoupon(CouponDTO couponReq);
 
     /**
      * 更新优惠券
@@ -37,13 +37,13 @@ public interface ICouponService {
      * @author yazhong.qi
      * @version 1.0.0
      */
-    MmcResult<Integer> updateCoupon(CouponDTO couponReq);
+    DemoResult<Integer> updateCoupon(CouponDTO couponReq);
 
     /**
      * 分页查询优惠券
      * @param couponQueryReq
      * @return
      */
-    MmcResult<QueryResultInfo<CouponInfo>> queryCoupon(CouponQueryDTO couponQueryReq);
+    DemoResult<QueryResult<CouponODTO>> queryCoupon(CouponQueryDTO couponQueryReq);
 
 }

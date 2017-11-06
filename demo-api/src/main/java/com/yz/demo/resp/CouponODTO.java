@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @ApiModel("优惠券")
-public class CouponInfo implements Serializable {
+public class CouponODTO implements Serializable {
 
     /**
      * @Fields serialVersionUID : 序列化版本号

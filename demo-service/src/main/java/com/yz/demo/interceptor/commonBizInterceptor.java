@@ -12,7 +12,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import com.yz.demo.biz.exception.CommonBizException;
-import com.yz.demo.resp.MmcResult;
+import com.yz.demo.resp.DemoResult;
 import com.yz.demo.resp.MmcResultCode;
 import com.chinaredstar.perseus.utils.JsonUtil;
 
@@ -47,14 +47,14 @@ public class commonBizInterceptor {
 		} catch (CommonBizException e) {
 			logger.warn(e.getMessage() + " Input parameters=" + JsonUtil.toJson(args, false), e);	
 			
-			MmcResult<Object> r = MmcResult.newSuccess();		
+			DemoResult<Object> r = DemoResult.newSuccess();
 			r.setErrorCode(e.getMmcResultCode());
 			r.setMessage(e.getErrorMsg());
 			ret = r;				
 		} catch (Exception e) {
 			logger.error(e.getMessage() + " Input parameters=" + JsonUtil.toJson(args, false), e);	
 			
-			MmcResult<Object> r = MmcResult.newSuccess();	
+			DemoResult<Object> r = DemoResult.newSuccess();
 			r.setErrorCode(MmcResultCode.SYS_ERROR);			
 			ret = r;
 		}

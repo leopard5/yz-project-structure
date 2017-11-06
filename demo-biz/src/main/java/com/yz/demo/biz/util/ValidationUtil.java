@@ -6,12 +6,12 @@ import java.util.regex.Pattern;
 
 import org.springframework.util.StringUtils;
 
-import com.yz.demo.resp.MmcResult;
+import com.yz.demo.resp.DemoResult;
 import com.yz.demo.resp.MmcResultCode;
 
 public abstract class ValidationUtil {
 
-	public static boolean isNullOrEmpty(MmcResult<?> message, String fieldName, String value) {
+	public static boolean isNullOrEmpty(DemoResult<?> message, String fieldName, String value) {
 		if (hasText(value)) {
 			return false;
 		}
@@ -19,12 +19,12 @@ public abstract class ValidationUtil {
 		return true;
 	}
 
-	public static boolean isNotNullOrEmpty(MmcResult<?> message, String fieldName, String value) {
+	public static boolean isNotNullOrEmpty(DemoResult<?> message, String fieldName, String value) {
 		return !isNullOrEmpty(message, fieldName, value);
 	}
 
 	public static boolean isEmptyOrLessThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			String value,
 			int minLength) {
@@ -32,7 +32,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isLessThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			String value,
 			int minLength) {
@@ -40,7 +40,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isLessThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			BigDecimal value,
 			double minValue) {
@@ -56,7 +56,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isMoreThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			BigDecimal value,
 			double maxValue) {
@@ -73,7 +73,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isLessThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			Integer value,
 			int minValue) {
@@ -90,7 +90,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isMoreThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			Integer value,
 			int maxValue) {
@@ -107,7 +107,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isLessThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			Long value,
 			long minValue) {
@@ -124,7 +124,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isMoreThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			Long value,
 			long maxValue) {
@@ -141,7 +141,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isEmptyOrMoreThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			String value,
 			int maxLength) {
@@ -149,7 +149,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isMoreThan(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			String value,
 			int maxLength) {
@@ -157,7 +157,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isEmptyOrNotInRange(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			String value,
 			int minLength,
@@ -166,7 +166,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean isNotInRange(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			String value,
 			int minLength,
@@ -175,7 +175,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean validate(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			String value,
 			int minLength,
@@ -185,7 +185,7 @@ public abstract class ValidationUtil {
 	}
 
 	public static boolean validate(
-			MmcResult<?> message,
+			DemoResult<?> message,
 			String fieldName,
 			Boolean isAllowEmpty,
 			String value,
@@ -227,7 +227,7 @@ public abstract class ValidationUtil {
 	 * @throws null
 	 * @author qiyazhong
 	 */
-	public static boolean isValidEmail(MmcResult<?> message, String fieldName, String value) {
+	public static boolean isValidEmail(DemoResult<?> message, String fieldName, String value) {
 
 		if (isNullOrEmpty(message, fieldName, value)) {
 			return false;
@@ -251,7 +251,7 @@ public abstract class ValidationUtil {
 	 * @throws null
 	 * @author qiyazhong
 	 */
-	public static boolean isValidMobile(MmcResult<?> message, String fieldName, String value) {
+	public static boolean isValidMobile(DemoResult<?> message, String fieldName, String value) {
 		if (mobilePattern.matcher(value).matches()) {
 			return true;
 		}
@@ -271,7 +271,7 @@ public abstract class ValidationUtil {
 	 * @throws null
 	 * @author qiyazhong
 	 */
-	public static boolean isValidIDNumber(MmcResult<?> message, String fieldName, String value) {
+	public static boolean isValidIDNumber(DemoResult<?> message, String fieldName, String value) {
 		if (idNumPattern.matcher(value).matches()) {
 			return true;
 		}
@@ -289,7 +289,7 @@ public abstract class ValidationUtil {
 	 * @throws null
 	 * @author qiyazhong
 	 */
-	public static boolean isNull(MmcResult<?> message, String fieldName, Object obj) {
+	public static boolean isNull(DemoResult<?> message, String fieldName, Object obj) {
 		if (obj == null) {
 			message.setErrorCode(MmcResultCode.FIELD_NOT_ALLOWED_EMPTY, fieldName);
 			return true;
@@ -307,7 +307,7 @@ public abstract class ValidationUtil {
 	 * @throws null
 	 * @author qiyazhong
 	 */
-	public static boolean isValidDate(MmcResult<?> message, String fieldName, long dateInMs) {
+	public static boolean isValidDate(DemoResult<?> message, String fieldName, long dateInMs) {
 		try {
 			if (dateInMs <= 0) {
 				message.setErrorCode(MmcResultCode.FIELD_NOT_ALLOWED_EMPTY, fieldName);

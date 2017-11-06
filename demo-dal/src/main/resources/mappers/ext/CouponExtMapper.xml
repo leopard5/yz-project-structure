@@ -235,7 +235,7 @@
 			AND coupon.activity_id = #{activityId}
 		]]>
     </select>
-	<select id="listCouponsByOpenId" resultType="com.yz.demo.resp.CouponInfo">
+	<select id="listCouponsByOpenId" resultType="com.yz.demo.resp.CouponODTO">
 	SELECT 
 	  c.id,
 	  c.owner_type,

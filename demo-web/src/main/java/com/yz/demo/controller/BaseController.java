@@ -1,7 +1,7 @@
 package com.yz.demo.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.yz.demo.resp.MmcResult;
+import com.yz.demo.resp.DemoResult;
 import com.yz.demo.resp.MmcResultCode;
 import com.yz.demo.vo.UserVo;
 import org.slf4j.Logger;
@@ -37,7 +37,7 @@ public class BaseController {
      * @param result
      * @return
      */
-    protected UserVo getUser(MmcResult<?> result) {
+    protected UserVo getUser(DemoResult<?> result) {
         Object object = session.getAttribute(userKey);
         UserVo userVo = null;
 
@@ -54,7 +54,7 @@ public class BaseController {
      * @param result
      * @return
      */
-    protected void getBaseReq(MmcResult<?> result) {
+    protected void getBaseReq(DemoResult<?> result) {
         try {
             UserVo userVo = this.getUser(result);
             if (null == userVo) {

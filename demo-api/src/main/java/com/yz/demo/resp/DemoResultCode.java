@@ -1,6 +1,6 @@
 package com.yz.demo.resp;
 
-public enum MmcResultCode {
+public enum DemoResultCode {
 	// 操作成功标识
 	SUCCESS("200", "Success"),
     // 系统异常标识
@@ -326,7 +326,7 @@ public enum MmcResultCode {
     public String code;
     public String message;
     
-    MmcResultCode(String code, String message) {
+    DemoResultCode(String code, String message) {
         this.code = code;
         this.message = message;
     }

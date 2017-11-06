@@ -9,21 +9,21 @@ import com.yz.demo.model.Coupon;
 import com.yz.demo.model.CouponQuery;
 import com.yz.demo.req.CouponQueryDTO;
 import com.yz.demo.req.CouponDTO;
-import com.yz.demo.resp.CouponInfo;
-import com.yz.demo.resp.QueryResultInfo;
+import com.yz.demo.resp.CouponODTO;
+import com.yz.demo.resp.QueryResult;
 
 public abstract class CouponConvertor {
 
-	private static final BeanCopier beanCopierForCouponInfo = BeanCopier.create(Coupon.class, CouponInfo.class, false);
+	private static final BeanCopier beanCopierForCouponInfo = BeanCopier.create(Coupon.class, CouponODTO.class, false);
 	private static final BeanCopier beanCopierForCoupon = BeanCopier.create(CouponDTO.class, Coupon.class, false);
 	private static final BeanCopier beanCopierForCouponQuery = BeanCopier.create(CouponQueryDTO.class, CouponQuery.class, false);
 
-	public static CouponInfo toCouponInfo(Coupon coupon)
+	public static CouponODTO toCouponInfo(Coupon coupon)
 	{
 		if (coupon == null) {
 			return null;
 		}
-		CouponInfo couponInfo = new CouponInfo();
+		CouponODTO couponInfo = new CouponODTO();
 		beanCopierForCouponInfo.copy(coupon, couponInfo, null);
 		return couponInfo;
 	}
@@ -35,12 +35,12 @@ public abstract class CouponConvertor {
 		return coupon;
 	}
 
-	public static List<CouponInfo> toCouponInfoList(List<Coupon> couponList)
+	public static List<CouponODTO> toCouponInfoList(List<Coupon> couponList)
 	{
 		if (couponList == null || couponList.isEmpty()) {
 			return null;
 		}
-		List<CouponInfo> couponInfoList = new ArrayList<CouponInfo>(couponList.size());
+		List<CouponODTO> couponInfoList = new ArrayList<CouponODTO>(couponList.size());
 		for (Coupon coupon : couponList) {
 			couponInfoList.add(toCouponInfo(coupon));
 		}
@@ -69,9 +69,9 @@ public abstract class CouponConvertor {
 		return couponQuery;
 	}
 
-	public static QueryResultInfo<CouponInfo> toQueryResultInfo(QueryResultInfo<Coupon> queryResult)
+	public static QueryResult<CouponODTO> toQueryResultInfo(QueryResult<Coupon> queryResult)
 	{
-		QueryResultInfo<CouponInfo> queryResultInfo = new QueryResultInfo<CouponInfo>();
+		QueryResult<CouponODTO> queryResultInfo = new QueryResult<CouponODTO>();
 		queryResultInfo.setPageNo(queryResult.getPageNo());
 		queryResultInfo.setPageSize(queryResult.getPageSize());
 		queryResultInfo.setTotalPages(queryResult.getTotalPages());
